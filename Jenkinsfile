@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage('Checkout') {
 			steps {
-					git 'https://github.com/iamdevopstrainer/DevOpsClassCodes'
+					git 'https://github.com/edureka-git/DevOpsClassCodes.git'
 				}
 		}
 	
