@@ -10,7 +10,7 @@ pipeline {
 		stage('Build') {
 			steps {
 					dir('') {
-					sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/myMaven361/bin/mvn -B -V -U -e clean package'
+					sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven/bin/mvn -B -V -U -e clean package'
 				}
 			}
 		}
@@ -19,14 +19,14 @@ pipeline {
 			steps {
 					script {
 					echo "Deployment"
-					sh 'sudo cp /var/lib/jenkins/workspace/PipelineJob/target/addressbook.war /usr/share/tomcat/webapps/'
+					sh 'sudo cp /var/lib/jenkins/workspace/DevPipeline/target/addressbook.war /usr/share/tomcat/webapps/'
 				}
 			}
 		}
 
 		stage('Email') {
 			steps {
-					emailext attachLog: true, body: 'The status of the build can be obtained from the build log attached', subject: 'STATUS: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'iamdevopstrainer@gmail.com'
+					emailext attachLog: true, body: 'The status of the build can be obtained from the build log attached', subject: 'STATUS: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'iamdevopsarch@gmail.com'
 				}
 		}
 
